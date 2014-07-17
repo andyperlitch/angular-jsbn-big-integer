@@ -2,15 +2,24 @@
 
 [Tom Wu's Original Website](http://www-cs-students.stanford.edu/~tjw/jsbn/)
 
-I felt compelled to put this on github and publish to npm. I haven't tested every other big integer library out there, but the few that I have tested in comparison to this one have not even come close in performance. I am aware of the `bi` module on npm, however it has been modified and I wanted to publish the original without modifications. This is jsbn and jsbn2 from Tom Wu's original website above, with the modular pattern applied to prevent global leaks and to allow for use with node.js on the server side.
+This is the BigInteger class from Tom Wu's jsbn library. I haven't tested every other big integer library out there, but the few that I have tested in comparison to this one have not even come close in performance. I have adapted it to be an angular module, published to bower.
+
+## install with bower
+
+    $ bower install angular-jsbn-big-integer
 
 ## usage
+First, add it to your app dependencies:
 
-    var BigInteger = require('jsbn');
-    
-    var a = new BigInteger('91823918239182398123');
-    alert(a.bitLength()); // 67
+    angular.module('yourApp', ['jsbn.BigInteger']);
 
+Now you may inject it and use it as a constructor (with the `new` operator) anywhere in your app code:
+
+    angular.controller('MyConroller', function($scope, BigInteger) {
+        $scope.myInt = new BigInteger('123412341234123412341234123412341234');
+    });
+
+Note: you must pass a string of numbers if you want it to be interpreted as a base-10 integer.
 
 ## API
 
