@@ -1,4 +1,4 @@
-(function(){
+(function(angular){
     
     // Copyright (c) 2005  Tom Wu
     // All Rights Reserved.
@@ -1217,10 +1217,9 @@
     // int hashCode()
     // long longValue()
     // static BigInteger valueOf(long val)
-    if (typeof exports !== 'undefined') {
-        exports = module.exports = BigInteger;
-    } else {
-        this.BigInteger = BigInteger;
-    }
+    angular.module('jsbn.BigInteger', [])
+    .factory('BigInteger', function() {
+      return BigInteger;
+    });
     
-}).call(this);
+})(angular);
